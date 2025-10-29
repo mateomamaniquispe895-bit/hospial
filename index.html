@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/estilos.css">
+    <title>Panel de Emergencias - Formularios</title>
+  </head>
+  <body>
+    <header class="site-header">
+      <h1>Panel de Emergencias · Registro Rápido</h1>
+    </header>
+
+    <main class="panel-emergencias" id="main-content">
+
+      <div class="grid-principal">
+        <section class="card" role="region" aria-labelledby="paciente-title">
+          <h2 id="paciente-title">Paciente de Alta Prioridad</h2>
+          <div class="sub-texto">Ingreso / actualización de estado</div>
+          <div class="linea"></div>
+
+          <form aria-label="Formulario paciente">
+            <div class="form-grupo">
+              <label for="paciente-nombre">Nombre / Identificador del Paciente <span class="required">*</span></label>
+              <input id="paciente-nombre" 
+                     name="paciente-nombre" 
+                     type="text" 
+                     placeholder="Ej: L. Quispe (F, 31)" 
+                     required
+                     pattern=".{3,}" 
+                     title="Ingrese al menos 3 caracteres" />
+            </div>
+
+            <div class="form-grupo">
+              <label for="diagnostico">Diagnóstico breve <span class="required">*</span></label>
+              <textarea id="diagnostico" 
+                        name="diagnostico" 
+                        rows="3" 
+                        placeholder="Ej: Pre-eclampsia severa, TA elevada..."
+                        required
+                        minlength="10"
+                        title="Ingrese al menos 10 caracteres"></textarea>
+            </div>
+
+            <div class="form-grupo">
+              <label for="prioridad">Prioridad <span class="required">*</span></label>
+              <select id="prioridad" 
+                      name="prioridad" 
+                      required>
+                <option value="">Seleccione una prioridad...</option>
+                <option value="critico">CRÍTICO</option>
+                <option value="urgencia">URGENCIA</option>
+                <option value="observacion">OBSERVACIÓN</option>
+              </select>
+            </div>
+
+            <div class="form-grupo">
+              <label for="ubicacion">Ubicación / Box <span class="required">*</span></label>
+              <input id="ubicacion" 
+                     name="ubicacion" 
+                     type="text" 
+                     placeholder="Ej: UCI-03 / Trauma Shock" 
+                     required
+                     pattern=".{2,}"
+                     title="Ingrese una ubicación válida" />
+            </div>
+
+            <div class="form-grupo">
+              <label for="tiempo-espera">Tiempo de espera aprox. (min) <span class="required">*</span></label>
+              <input id="tiempo-espera"
+                     name="tiempo-espera" 
+                     type="number" 
+                     min="0" 
+                     max="1440"
+                     placeholder="Ej: 12"
+                     required
+                     title="Ingrese un tiempo entre 0 y 1440 minutos" />
+            </div>
+
+            <button type="submit" class="btn-primary">Registrar Paciente</button>
+          </form>
+        </section>
+
+        <section class="card" role="region" aria-labelledby="recursos-title">
+          <h2 id="recursos-title">Recursos Críticos</h2>
+          <div class="sub-texto">Disponibilidad inmediata</div>
+          <div class="linea"></div>
+
+          <form aria-label="Formulario recursos" novalidate>
+            <div class="form-inline-2col">
+              <div class="form-grupo">
+                <label>Recurso</label>
+                <select>
+                  <option>Oxígeno Portátil</option>
+                  <option>Ventilador</option>
+                  <option>Guantes estériles</option>
+                  <option>Adrenalina (ampollas)</option>
+                </select>
+              </div>
+
+              <div class="form-grupo">
+                <label>Cantidad disponible</label>
+                <input type="number" min="0" placeholder="Ej: 4" />
+              </div>
+            </div>
+
+            <div class="form-grupo">
+              <label>Estado</label>
+              <select>
+                <option>Normal</option>
+                <option>Bajo</option>
+                <option>Crítico</option>
+              </select>
+            </div>
+
+            <div class="form-grupo">
+              <label>Comentario interno</label>
+              <input type="text" placeholder="Ej: Pedido a Farmacia Central" />
+            </div>
+
+            <button type="submit" class="btn-primary">Actualizar Stock</button>
+          </form>
+        </section>
+
+        <section class="card" role="region" aria-labelledby="personal-title">
+          <h2 id="personal-title">Personal de Guardia</h2>
+          <div class="sub-texto">Asignación de turno</div>
+          <div class="linea"></div>
+
+          <form aria-label="Formulario personal" novalidate>
+            <div class="form-grupo">
+              <label>Nombre / Grado</label>
+              <input type="text" placeholder="Ej: Dra. S. Aguilar" />
+            </div>
+
+            <div class="form-grupo">
+              <label>Rol / Especialidad</label>
+              <input
+                type="text"
+                placeholder="Ej: Emergencióloga Jefe / Cardiología / Enfermería UCI"
+              />
+            </div>
+
+            <div class="form-grupo">
+              <label>Área asignada</label>
+              <input
+                type="text"
+                placeholder="Ej: UCI Adultos / Trauma Shock / Pediatría"
+              />
+            </div>
+
+            <div class="form-grupo">
+              <label>Horario</label>
+              <input type="text" placeholder="Ej: 22:00 - 06:00" />
+            </div>
+
+            <button type="submit" class="btn-primary">Agregar al Turno</button>
+          </form>
+        </section>
+      </div>
+
+      <div class="footer-mini">
+        Panel de Emergencias · Formularios · Diseño mejorado para legibilidad y accesibilidad
+      </div>
+    </main>
+  </body>
+</html>

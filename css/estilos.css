@@ -1,0 +1,308 @@
+
+      :root {
+        /* Paleta y tokens para UI consistente */
+        --fondo-pagina: #eef5f8;
+        --borde-card: #cfe5ee;
+        --bg-card: #ffffff;
+        --texto-main: #0f2730; /* tono más oscuro para contraste */
+        --texto-sec: #476972;
+        --muted: #6b8590;
+        --btn-bg: #2e9e73; /* verde clínico */
+        --btn-bg-hover: #257c5a;
+        --btn-text: #ffffff;
+        --input-borde: #c0d7e0;
+        --separador: #e6f0f5;
+        --focus: #4fb0a1;
+        --shadow: 0 6px 18px rgba(15,39,48,0.06);
+        --radius-lg: 12px;
+        --radius-md: 8px;
+      }
+
+      /* Tipografía moderna y más legible */
+      body {
+        font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+        background: var(--fondo-pagina);
+        margin: 0;
+        padding: 20px;
+        color: var(--texto-main);
+        font-size: 16px;
+        line-height: 1.4;
+        -webkit-font-smoothing:antialiased;
+      }
+
+      .site-header {
+        max-width: 1200px;
+        margin: 0 auto 14px;
+        padding: 8px 12px;
+        text-align: center;
+      }
+
+      .site-header h1 {
+        margin: 0;
+        font-size: 20px;
+        font-weight: 700;
+        color: var(--texto-main);
+      }
+
+      .panel-emergencias {
+        max-width: 1200px;
+        margin: 0 auto;
+        background: transparent; /* contenedor externo neutro */
+        padding: 0;
+      }
+
+      .grid-principal {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+        align-items: start;
+      }
+
+      /* Estilos para laptops (1366px y menos) */
+      @media (max-width: 1366px) {
+        body { padding: 16px; }
+        .panel-emergencias { max-width: 1100px; }
+        .grid-principal { 
+          grid-template-columns: repeat(3, 1fr);
+          gap: 14px; 
+        }
+        .card { padding: 12px; }
+      }
+
+      /* Tablets y laptops pequeñas */
+      @media (max-width: 1000px) {
+        .panel-emergencias { max-width: 900px; }
+        .grid-principal { 
+          grid-template-columns: repeat(2, 1fr);
+          gap: 16px;
+        }
+        .card {
+          padding: 16px;
+          transition: transform .2s ease;
+        }
+        .card:hover {
+          transform: translateY(-6px);
+          box-shadow: 0 14px 28px rgba(15,39,48,0.12);
+        }
+      }
+
+      /* Tablets pequeñas y móviles grandes */
+      @media (max-width: 768px) {
+        body { padding: 12px 16px; }
+        .site-header { margin-bottom: 20px; }
+        .grid-principal { gap: 20px; }
+        .card {
+          padding: 18px;
+          border-radius: 12px;
+        }
+        form { padding: 16px; }
+      }
+
+      /* Móviles */
+      @media (max-width: 640px) {
+        body { 
+          padding: 0;
+          background: #fff; /* Fondo blanco en móvil */
+        }
+        .site-header {
+          background: var(--fondo-pagina);
+          padding: 20px 16px;
+          margin: 0 0 1px 0;
+          box-shadow: 0 1px 3px rgba(15,39,48,0.05);
+        }
+        .grid-principal { 
+          grid-template-columns: 1fr;
+          gap: 1px; 
+        }
+        .card {
+          border-radius: 0;
+          border-left: none;
+          border-right: none;
+          box-shadow: none;
+          border-color: var(--separador);
+          transform: none !important; /* Deshabilitar hover en móvil */
+        }
+        .card:hover {
+          box-shadow: none;
+        }
+        form {
+          border-radius: 8px;
+          margin-top: 4px;
+        }
+      }
+
+      .card {
+        background: var(--bg-card);
+        border: 1px solid var(--borde-card);
+        border-radius: var(--radius-md);
+        padding: 14px;
+        box-shadow: var(--shadow);
+        transition: transform .12s ease, box-shadow .12s ease;
+      }
+
+      .card:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(15,39,48,0.08); }
+
+      .card h2 {
+        font-size: 16px;
+        margin: 0 0 6px 0;
+        font-weight: 600;
+        color: var(--texto-main);
+      }
+
+      .sub-texto {
+        font-size: 13px;
+        color: var(--texto-sec);
+        margin-bottom: 8px;
+      }
+
+      .linea {
+        height: 1px;
+        background: var(--separador);
+        margin-bottom: 12px;
+        border-radius: 2px;
+      }
+
+      form {
+        background: #fbfeff;
+        border: 1px solid var(--borde-card);
+        border-radius: var(--radius-md);
+        padding: 12px;
+        font-size: 15px;
+      }
+
+      form .form-grupo { display: flex; flex-direction: column; margin-bottom: 12px; }
+
+      form label {
+        font-size: 13px;
+        font-weight: 600;
+        margin-bottom: 6px;
+        color: var(--texto-main);
+      }
+
+      /* Variables para validación */
+      :root {
+        --color-error: #dc3545;
+        --color-valid: #28a745;
+        --color-error-bg: rgba(220, 53, 69, 0.08);
+        --color-valid-bg: rgba(40, 167, 69, 0.08);
+      }
+
+      /* Estilos para el asterisco de required */
+      .required {
+        color: var(--color-error);
+        margin-left: 4px;
+      }
+
+      form input,
+      form select,
+      form textarea {
+        font-size: 15px;
+        padding: 10px 12px;
+        border: 1.5px solid var(--input-borde);
+        border-radius: 8px;
+        background: #ffffff;
+        color: var(--texto-main);
+        transition: all 0.2s ease-in-out;
+      }
+
+      form input::placeholder, form textarea::placeholder { 
+        color: #9fb2bb; 
+      }
+
+      /* Estados de foco */
+      form input:focus,
+      form select:focus,
+      form textarea:focus {
+        outline: none;
+        border-color: var(--focus);
+        box-shadow: 0 0 0 4px rgba(79,176,161,0.08);
+      }
+
+      /* Estados de validación */
+      form input:not(:placeholder-shown):invalid,
+      form textarea:not(:placeholder-shown):invalid,
+      form select:invalid {
+        border-color: var(--color-error);
+        background-color: #fff;
+        box-shadow: 0 0 0 4px var(--color-error-bg);
+      }
+
+      form input:not(:placeholder-shown):valid,
+      form textarea:not(:placeholder-shown):valid,
+      form select:valid:not([value=""]) {
+        border-color: var(--color-valid);
+        background-color: #fff;
+        box-shadow: 0 0 0 4px var(--color-valid-bg);
+      }
+
+      /* Mensaje de error personalizado */
+      form input:not(:placeholder-shown):invalid + .error-message,
+      form textarea:not(:placeholder-shown):invalid + .error-message,
+      form select:invalid + .error-message {
+        display: block;
+        color: var(--color-error);
+        font-size: 12px;
+        margin-top: 4px;
+      }
+
+      form textarea { resize: vertical; min-height: 68px; }
+
+      .btn-primary {
+        display: inline-block;
+        background: var(--btn-bg);
+        color: var(--btn-text);
+        border: none;
+        border-radius: 8px;
+        font-size: 15px;
+        padding: 10px 14px;
+        font-weight: 700;
+        cursor: pointer;
+        width: 100%;
+      }
+
+      .btn-primary:hover { background: var(--btn-bg-hover); }
+
+      .form-inline-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+      @media (max-width: 420px) { .form-inline-2col { grid-template-columns: 1fr; } }
+
+      /* Footer pequeño */
+      .footer-mini {
+        text-align: center;
+        margin: 18px 0 40px;
+        font-size: 13px;
+        color: var(--muted);
+      }
+
+      /* Mejoras de accesibilidad: estados visibles de foco y tamaño táctil */
+      button, input[type="button"], input[type="submit"] { -webkit-tap-highlight-color: rgba(0,0,0,0); }
+
+      /* Ajustes para que los inputs sean fáciles de tocar en móvil */
+      @media (max-width: 640px) {
+        body { -webkit-text-size-adjust: 100%; }
+      form { margin: 0 -12px; padding: 16px; }
+      form input, 
+      form select, 
+      form textarea { 
+        font-size: 16px;
+        padding: 14px;
+        border-radius: 10px;
+        background: #fafcfd;
+      }
+      .btn-primary { 
+        padding: 14px;
+        font-size: 16px;
+        border-radius: 10px;
+        margin-top: 6px;
+        background: linear-gradient(to bottom right, #2e9e73, #24895f);
+      }
+      .form-grupo { margin-bottom: 16px; }
+      
+      /* Mejoras táctiles para móvil */
+      form input:focus,
+      form select:focus,
+      form textarea:focus {
+        background: #fff;
+        box-shadow: 0 0 0 3px rgba(79,176,161,0.15);
+      }
+      }
